@@ -1,6 +1,6 @@
 # Exercise 2
 
-1. Implement this code in `__main__.py` in the `rates_client` folder. 
+1. Implement this code in `__main__.py` in the `simple_rates_client` folder. 
 
 2. Install the `requests` package from PyPi.org.
 
