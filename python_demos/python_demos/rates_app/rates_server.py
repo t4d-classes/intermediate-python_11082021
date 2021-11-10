@@ -2,22 +2,46 @@
 from typing import Optional
 import multiprocessing as mp
 import sys
+import socket
+
+# Create "ClientConnectionThread" class that inherits from "Thread"
+
+# Each time a client connects, a new thread should be created with the
+# "ClientConnectionThread" class. The class is responsible for sending the
+# welcome message and interacting with the client, echoing messages
+
+# The server should support multiple clients at the same time
 
 
-def rate_server() -> None:
+def rate_server(host: str, port: int) -> None:
     """rate server"""
 
-    while True:
-        pass
+    with socket.socket(
+            socket.AF_INET, socket.SOCK_STREAM) as socket_server:
+
+        socket_server.bind((host, port))
+        socket_server.listen()
+
+        # Note: this is a blocking call, it waits for a connection from the
+        # client
+        conn, _ = socket_server.accept()
+
+        # Note: this code executes once a connection is received
+        conn.sendall(b"Connected to the Rate Server")
+
+        while True:
+            message = conn.recv(2048).decode('UTF-8')
+            conn.sendall(message.encode('UTF-8'))
 
 
-def command_start_server(server_process: Optional[mp.Process]) -> mp.Process:
+def command_start_server(
+        server_process: Optional[mp.Process], host: str, port: int) -> mp.Process:
     """ command start server """
 
     if server_process and server_process.is_alive():
         print("server is already running")
     else:
-        server_process = mp.Process(target=rate_server)
+        server_process = mp.Process(target=rate_server, args=(host, port))
         server_process.start()
 
         print("server started")
@@ -62,12 +86,16 @@ def main() -> None:
 
         server_process: Optional[mp.Process] = None
 
+        host = "127.0.0.1"
+        port = 5050
+
         while True:
 
             command = input("> ")
 
             if command == "start":
-                server_process = command_start_server(server_process)
+                server_process = command_start_server(
+                    server_process, host, port)
             elif command == "stop":
                 server_process = command_stop_server(server_process)
             elif command == "status":
