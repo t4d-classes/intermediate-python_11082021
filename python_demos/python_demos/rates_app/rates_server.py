@@ -1,16 +1,43 @@
 """ rate server module """
+
 from typing import Optional
+from multiprocessing.sharedctypes import Synchronized
 import multiprocessing as mp
 import sys
 import socket
 import threading
 
-# Use a multiprocessing shared "Value" object to track the count of
-# connected clients
-# increment the count when a client connects, and decrement the count when
-# a client disconnects
-# add a new server command named "count" that displays the count of
-# connected clients
+# Add support for the following client command
+
+# GET 2019-01-03 EUR,INR,CAD
+
+# GET is the command name
+# 2019-01-03 is the date of the current rates to retrieve
+# EUR,INR,CAD are the currency symbols to retrieve, DO NOT USE USD
+
+# Call the Rates API using the USD as the base to get the currency rate
+# for the specified year
+
+# Ideally your code will do the following:
+
+# 1. Use a regular expression with named capture groups to extract parts
+# of the command
+
+# 2. Add a function named "process_client_command" to
+# "ClientConnectionThread" that will process the parsed command including
+# calling the API, extracting the API response, and send back the rate
+# value to the client
+
+# 2a. Issue one request to the "simple_rates_client.rates_api" server with
+# currencies in a comma-separated list
+
+# 2b. Issue one request per currency symbol using the ThreadPoolExecutor or
+# plain Thread objects.
+
+# Data comes back as JSON
+
+# 3. Send back an error message for an incorrectly formatted command or an
+# unsupported command name (only the GET command is supported)
 
 
 class ClientConnectionThread(threading.Thread):
@@ -18,23 +45,34 @@ class ClientConnectionThread(threading.Thread):
 
     def __init__(
             self,
-            conn: socket.socket) -> None:
+            conn: socket.socket,
+            client_count: Synchronized) -> None:
 
         threading.Thread.__init__(self)
         self.conn = conn
+        self.client_count = client_count
 
     def run(self) -> None:
 
-        self.conn.sendall(b"Connected to the Rate Server")
+        try:
 
-        while True:
-            message = self.conn.recv(2048)
-            if not message:
-                break
-            self.conn.sendall(message)
+            self.conn.sendall(b"Connected to the Rate Server")
+
+            while True:
+                message = self.conn.recv(2048)
+                if not message:
+                    break
+                self.conn.sendall(message)
+
+        except BaseException:
+            pass
+
+        finally:
+            with self.client_count.get_lock():
+                self.client_count.value -= 1
 
 
-def rate_server(host: str, port: int) -> None:
+def rate_server(host: str, port: int, client_count: Synchronized) -> None:
     """rate server"""
 
     with socket.socket(
@@ -47,20 +85,25 @@ def rate_server(host: str, port: int) -> None:
 
             conn, _ = socket_server.accept()
 
-            client_con_thread = ClientConnectionThread(conn)
+            with client_count.get_lock():
+                client_count.value += 1
+
+            client_con_thread = ClientConnectionThread(conn, client_count)
             client_con_thread.start()
 
 
 def command_start_server(
-        server_process: Optional[mp.Process], host: str, port: int) -> mp.Process:
+        server_process: Optional[mp.Process],
+        host: str, port: int,
+        client_count: Synchronized) -> mp.Process:
     """ command start server """
 
     if server_process and server_process.is_alive():
         print("server is already running")
     else:
-        server_process = mp.Process(target=rate_server, args=(host, port))
+        server_process = mp.Process(
+            target=rate_server, args=(host, port, client_count))
         server_process.start()
-
         print("server started")
 
     return server_process
@@ -82,15 +125,23 @@ def command_stop_server(
 
 
 def command_server_status(server_process: Optional[mp.Process]) -> None:
-    """ command start server """
+    """ output the status of the server """
 
+    # typeguard
     if server_process and server_process.is_alive():
         print("server is running")
     else:
         print("server is stopped")
 
 
+def command_count(client_count: Synchronized) -> None:
+    """ exit the rates server app """
+
+    print(client_count.value)
+
+
 def command_exit(server_process: Optional[mp.Process]) -> None:
+    """ exit the rates server app """
 
     if server_process and server_process.is_alive():
         server_process.terminate()
@@ -101,6 +152,7 @@ def main() -> None:
 
     try:
 
+        client_count: Synchronized = mp.Value('i', 0)
         server_process: Optional[mp.Process] = None
 
         host = "127.0.0.1"
@@ -112,9 +164,11 @@ def main() -> None:
 
             if command == "start":
                 server_process = command_start_server(
-                    server_process, host, port)
+                    server_process, host, port, client_count)
             elif command == "stop":
                 server_process = command_stop_server(server_process)
+            elif command == "count":
+                command_count(client_count)
             elif command == "status":
                 command_server_status(server_process)
             elif command == "exit":
