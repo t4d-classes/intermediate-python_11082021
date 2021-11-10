@@ -28,11 +28,12 @@ import threading
 # calling the API, extracting the API response, and send back the rate
 # value to the client
 
-# 2a. Issue one request to the "simple_rates_client.rates_api" server with
-# currencies in a comma-separated list
+# 2a. Issue one Rates API request (data comes back as JSON) to the
+# "simple_rates_client.rates_api" server with currencies in a
+# comma-separated list
 
-# 2b. Issue one request per currency symbol using the ThreadPoolExecutor or
-# plain Thread objects.
+# 2b. Issue one Rates API request (data comes back as JSON) per currency
+# symbol using the ThreadPoolExecutor or plain Thread objects.
 
 # Data comes back as JSON
 
