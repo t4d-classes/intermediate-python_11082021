@@ -11,7 +11,30 @@ class TestSample(TestCase):
     def test_sample(self) -> None:
         """ Sample Test """
 
+        # arrange
+
+        # setup input variables, stuff like that
+
+        # act
+
         result = do_it()
+
+        # assert
+
+        self.assertEqual(result, True)
+
+    def test_sample2(self) -> None:
+        """ Sample Test """
+
+        # arrange
+
+        # setup input variables, stuff like that
+
+        # act
+
+        result = do_it()
+
+        # assert
 
         self.assertEqual(result, True)
 
