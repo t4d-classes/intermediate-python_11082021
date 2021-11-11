@@ -67,7 +67,7 @@ class ClientConnectionThread(threading.Thread):
                 client_command["date"], "%Y-%m-%d")
 
             currency_symbols = CURRENCY_SYMBOLS_REGEX.split(
-                client_command["symbol"])
+                client_command["symbols"])
 
             rate_responses: list[str] = []
 

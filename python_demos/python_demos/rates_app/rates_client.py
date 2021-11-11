@@ -2,31 +2,39 @@
 import sys
 import socket
 
-try:
 
-    with socket.socket(
-            socket.AF_INET, socket.SOCK_STREAM) as socket_client:
+def main(host: str, port: int) -> None:
+    """ main """
 
-        socket_client.connect(('127.0.0.1', 5050))
+    try:
 
-        welcome_message = socket_client.recv(2048)
+        with socket.socket(
+                socket.AF_INET, socket.SOCK_STREAM) as socket_client:
 
-        print(welcome_message.decode('UTF-8'))
+            socket_client.connect((host, port))
 
-        while True:
+            welcome_message = socket_client.recv(2048)
 
-            command = input("> ")
+            print(welcome_message.decode('UTF-8'))
 
-            if command == "exit":
-                break
-            else:
-                socket_client.sendall(command.encode('UTF-8'))
-                print(socket_client.recv(2048).decode('UTF-8'))
+            while True:
 
-except ConnectionResetError:
-    print("Server connection was closed.")
+                command = input("> ")
 
-except KeyboardInterrupt:
-    pass
+                if command == "exit":
+                    break
+                else:
+                    socket_client.sendall(command.encode('UTF-8'))
+                    print(socket_client.recv(2048).decode('UTF-8'))
 
-sys.exit(0)
+    except ConnectionResetError:
+        print("Server connection was closed.")
+
+    except KeyboardInterrupt:
+        pass
+
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main('127.0.0.1', 5050)

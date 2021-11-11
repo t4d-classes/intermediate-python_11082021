@@ -6,7 +6,7 @@ import re
 CLIENT_COMMAND_PARTS = [
     r"^(?P<name>[A-Z]*) ",
     r"(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2}) ",
-    r"(?P<symbol>[A-Z,:;|]*)$"
+    r"(?P<symbols>[A-Z,:;|]*)$"
 ]
 
 CLIENT_COMMAND_REGEX = re.compile("".join(CLIENT_COMMAND_PARTS))
