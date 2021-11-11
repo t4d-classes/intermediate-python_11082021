@@ -29,5 +29,6 @@
     "[markdown]": {
         "editor.wordWrap": "wordWrapColumn",
         "editor.wordWrapColumn": 79,
-    }
+    },
+    "python.pythonPath": "venv/bin/python"
 }
