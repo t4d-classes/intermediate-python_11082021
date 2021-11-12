@@ -15,27 +15,26 @@ class TestContact(TestCase):
         # these three lines are the same
         # addr = Address.return_value
         # addr = person.address
-        addr = Address()
+
+        person = PersonA(
+            "Bob",
+            "Smith",
+            "123 Oak Ln.",
+            "Paris",
+            "TX",
+            "12345")
+
+        Address.assert_called_once_with(
+            "123 Oak Ln.", "Paris", "TX", "12345")
+
+        addr = person.address
         addr.mailing.return_value = "123 Oak Ln.\nParis, TX 12345"
 
-        with patch("python_demos.ut_app.contact.Address") as Address2:
+        actual_result = person.mailing()
+        expected_result = "Bob Smith\n123 Oak Ln.\nParis, TX 12345"
 
-            person = PersonA(
-                "Bob",
-                "Smith",
-                "123 Oak Ln.",
-                "Paris",
-                "TX",
-                "12345")
-
-            Address.assert_called_once_with(
-                "123 Oak Ln.", "Paris", "TX", "12345")
-
-            actual_result = person.mailing()
-            expected_result = "Bob Smith\n123 Oak Ln.\nParis, TX 12345"
-
-            addr.mailing.assert_called_once()
-            self.assertEqual(actual_result, expected_result)
+        addr.mailing.assert_called_once()
+        self.assertEqual(actual_result, expected_result)
 
     def test_person_b_mailing(self) -> None:
 
