@@ -18,9 +18,15 @@ def business_days(
         if (the_date.weekday() < 5) and (the_date not in us_holidays):
             yield the_date
 
+class EndBeforeStartException(Exception):
+    pass
+
 
 def business_days_list(start_date: date, end_date: date) -> list[date]:
     """ business days """
+
+    if (end_date <= start_date):
+        raise EndBeforeStartException()
 
     us_holidays = holidays.UnitedStates()
     days: list[date] = []

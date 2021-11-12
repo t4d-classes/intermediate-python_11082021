@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">9%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">b</span>
+        <span class="key">p</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="shortkey_b">branches</th>
+                <th class="shortkey_p">partial</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>340</td>
+                <td>303</td>
+                <td>0</td>
+                <td>86</td>
+                <td>2</td>
+                <td class="right" data-ratio="39 426">9%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="python_demos___init___py.html">python_demos\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos___main___py.html">python_demos\__main__.py</a></td>
+                <td>6</td>
+                <td>6</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 8">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app___init___py.html">python_demos\rates_app\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_client_commands_py.html">python_demos\rates_app\client_commands.py</a></td>
+                <td>9</td>
+                <td>9</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 11">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_client_connection_thread_py.html">python_demos\rates_app\client_connection_thread.py</a></td>
+                <td>45</td>
+                <td>45</td>
+                <td>0</td>
+                <td>8</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 53">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_rates_client_py.html">python_demos\rates_app\rates_client.py</a></td>
+                <td>20</td>
+                <td>20</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 26">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_rates_server_py.html">python_demos\rates_app\rates_server.py</a></td>
+                <td>28</td>
+                <td>28</td>
+                <td>0</td>
+                <td>12</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 40">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_server_commands_py.html">python_demos\rates_app\server_commands.py</a></td>
+                <td>27</td>
+                <td>27</td>
+                <td>0</td>
+                <td>8</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 35">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_rates_app_server_process_py.html">python_demos\rates_app\server_process.py</a></td>
+                <td>12</td>
+                <td>12</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 12">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_api___init___py.html">python_demos\simple_rates_api\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_api___main___py.html">python_demos\simple_rates_api\__main__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_api_rates_api_py.html">python_demos\simple_rates_api\rates_api.py</a></td>
+                <td>42</td>
+                <td>27</td>
+                <td>0</td>
+                <td>20</td>
+                <td>1</td>
+                <td class="right" data-ratio="16 62">26%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_client___init___py.html">python_demos\simple_rates_client\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_client___main___py.html">python_demos\simple_rates_client\__main__.py</a></td>
+                <td>16</td>
+                <td>16</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 20">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_client___main__thread_pool_py.html">python_demos\simple_rates_client\__main__thread_pool.py</a></td>
+                <td>19</td>
+                <td>19</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 23">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_client_business_days_py.html">python_demos\simple_rates_client\business_days.py</a></td>
+                <td>25</td>
+                <td>25</td>
+                <td>0</td>
+                <td>10</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 35">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_simple_rates_client_rates_api_server_py.html">python_demos\simple_rates_client\rates_api_server.py</a></td>
+                <td>32</td>
+                <td>12</td>
+                <td>0</td>
+                <td>4</td>
+                <td>1</td>
+                <td class="right" data-ratio="21 36">58%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_some_pkg___init___py.html">python_demos\some_pkg\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_some_pkg_some_mod_py.html">python_demos\some_pkg\some_mod.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_ut_app___init___py.html">python_demos\ut_app\__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_ut_app_cart_item_py.html">python_demos\ut_app\cart_item.py</a></td>
+                <td>24</td>
+                <td>24</td>
+                <td>0</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 30">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_ut_app_contact_py.html">python_demos\ut_app\contact.py</a></td>
+                <td>26</td>
+                <td>26</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 26">0%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="python_demos_ut_app_patterns_py.html">python_demos\ut_app\patterns.py</a></td>
+                <td>7</td>
+                <td>7</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="0 7">0%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.5</a>,
+            created at 2021-11-12 14:41 -0500
+        </p>
+    </div>
+</div>
+</body>
+</html>

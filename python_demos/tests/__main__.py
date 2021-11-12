@@ -3,6 +3,7 @@
 from unittest import TestSuite, TextTestRunner
 
 from tests.test_sample import TestSample
+from tests.simple_rates_client.test_rates_api_server import TestRatesApiServer
 
 
 def suite() -> TestSuite:
@@ -10,6 +11,7 @@ def suite() -> TestSuite:
 
     test_suite = TestSuite()
     test_suite.addTest(TestSample())
+    test_suite.addTest(TestRatesApiServer())
     return test_suite
 
 

@@ -141,7 +141,7 @@ python -m mypy --ignore-missing-imports --follow-imports=silent --show-column-nu
 **Run the Unit Tests with Code Coverage**
 
 ```bash
-python -m coverage run --source="python_demos" -m unittest tests.__main__
+python -m coverage run --source="python_demos" --branch -m unittest tests.__main__
 ```
 
 **Generate Code Coverage Report**
@@ -149,6 +149,11 @@ python -m coverage run --source="python_demos" -m unittest tests.__main__
 ```bash
 python -m coverage report --omit="venv/*,tests/*,setup.py"
 ```
+
+```bash
+python -m coverage html --omit="venv/*,tests/*,setup.py"
+```
+
 
 ## Extra
 
