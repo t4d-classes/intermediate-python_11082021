@@ -1,6 +1,28 @@
+
+class NameEmptyError(Exception):
+    ...
+
+
+class PriceLessThanZeroError(Exception):
+    ...
+
+
+class QuantityLessThanZeroError(Exception):
+    ...
+
+
 class CartItem:
 
     def __init__(self, name: str, price: float, quantity: int = 0) -> None:
+
+        if len(name) == 0:
+            raise NameEmptyError()
+
+        if price < 0:
+            raise PriceLessThanZeroError()
+
+        if quantity < 0:
+            raise QuantityLessThanZeroError()
 
         self.name = name
         self.price = price
