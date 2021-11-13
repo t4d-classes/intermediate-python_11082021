@@ -39,4 +39,10 @@ class TestFoods(TestCase):
                 foods_file_path, encoding="UTF-8")
 
 
+    def tearDown(self) -> None:
+        self.mock_food_open = None
+        self.mock_food_data = None
+
+
+
 

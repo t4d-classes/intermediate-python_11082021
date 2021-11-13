@@ -1,0 +1,21 @@
+2021-11-12 17:14:13,754,DEBUG,root,Program started
+2021-11-12 17:14:15,811,ERROR,python_demos.rates_app.client_connect,Unable to connect to the server 127.0.0.1:5050
+2021-11-12 17:14:15,811,DEBUG,root,Program exiting
+2021-11-12 17:14:49,345,DEBUG,root,Program started
+2021-11-12 17:15:19,413,INFO,python_demos.rates_app.client_connect,Command: GET 2019-01-03 EUR
+2021-11-12 17:15:44,176,INFO,python_demos.rates_app.client_connect,Command: GET 2019-01-04 EUR
+2021-11-12 17:16:28,997,INFO,python_demos.rates_app.client_connect,Command: exit
+2021-11-12 17:16:28,997,DEBUG,root,Program exiting
+2021-11-12 17:23:56,537,DEBUG,root,Program started
+2021-11-12 17:24:05,064,INFO,client_commands,Command: GET 2019-01-03 EUR
+2021-11-12 17:24:51,191,INFO,client_commands,Command: exit
+2021-11-12 17:24:51,195,DEBUG,root,Program exiting
+2021-11-12 17:25:09,047,INFO,client_commands,Command: GET 2019-01-03 EUR,CAD
+2021-11-12 17:25:38,754,INFO,client_commands,Command: exit
+2021-11-12 17:25:50,364,ERROR,python_demos.rates_app.client_connect,Unable to connect to the server 127.0.0.1:5050
+2021-11-12 17:26:06,526,ERROR,python_demos.rates_app.client_connect,Unable to connect to the server 127.0.0.1:5050
+2021-11-12 17:28:01,624,ERROR,python_demos.rates_app.client_connect,Unable to connect to the server 127.0.0.1:5050
+Traceback (most recent call last):
+  File "C:\Users\ericwgreene\git\intermediate-python_11082021\python_demos\python_demos\rates_app\client_connect.py", line 28, in client_connect
+    socket_client.connect((host, port))
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it

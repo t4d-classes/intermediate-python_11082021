@@ -1,0 +1,4 @@
+Command: GET 2019-01-03 EUR
+Command: exit
+Command: GET 2019-01-03 EUR,CAD
+Command: exit
