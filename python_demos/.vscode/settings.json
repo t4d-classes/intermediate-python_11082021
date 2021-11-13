@@ -30,7 +30,7 @@
         "editor.wordWrap": "wordWrapColumn",
         "editor.wordWrapColumn": 79,
     },
-    "python.pythonPath": "venv/bin/python",
+    "python.pythonPath": "/Users/ericwgreene/.pyenv/versions/3.10.0/bin/python",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
